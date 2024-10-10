@@ -7,3 +7,15 @@ filename = "CHANGELOG.md"
 underlines = ["", "", ""]
 title_format = "## [{version}](https://github.com/SaitamTheBest/RAGAdmin/tree/{version}) - {project_date}"
 issue_format = "[#{issue}](https://github.com/SaitamTheBest/RAGAdmin/issues/{issue})"
+
+[tool.towncrier.types]
+# Définir les types que Towncrier va utiliser pour générer le changelog
+feature = "Features"
+bugfix = "Bug Fixes"
+doc = "Documentation"
+style = "Styles"
+refactor = "Refactors"
+performance = "Performance Improvements"
+test = "Tests"
+chore = "Chores"
+misc = "Miscellaneous Changes"

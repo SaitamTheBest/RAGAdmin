@@ -11,13 +11,35 @@ DESCRIPTION=$(echo "$COMMIT_MSG" | cut -d: -f2 | xargs)
 FRAGMENT_NAME=$(date +"%Y%m%d%H%M%S")
 
 # Déterminer le type du commit pour Towncrier (feature, bugfix, etc.)
-if [[ $TYPE == "feat" ]]; then
-    FRAGMENT_TYPE="feature"
-elif [[ $TYPE == "fix" ]]; then
-    FRAGMENT_TYPE="bugfix"
-else
-    FRAGMENT_TYPE="misc"
-fi
+case $TYPE in
+    feat)
+        FRAGMENT_TYPE="feature"
+        ;;
+    fix)
+        FRAGMENT_TYPE="bugfix"
+        ;;
+    docs)
+        FRAGMENT_TYPE="doc"
+        ;;
+    style)
+        FRAGMENT_TYPE="style"
+        ;;
+    refactor)
+        FRAGMENT_TYPE="refactor"
+        ;;
+    perf)
+        FRAGMENT_TYPE="performance"
+        ;;
+    test)
+        FRAGMENT_TYPE="test"
+        ;;
+    chore)
+        FRAGMENT_TYPE="chore"
+        ;;
+    *)
+        FRAGMENT_TYPE="misc"
+        ;;
+esac
 
 # Créer le fichier de fragment dans changelog.d
 FRAGMENT_FILE="changelog.d/${FRAGMENT_NAME}.${FRAGMENT_TYPE}"
