@@ -1,0 +1,17 @@
+    if message == "recherche":
+        fichier_r = input("recherche=>")
+        envoie = "recherche :"+fichier_r
+        client.send(envoie.encode('utf-8'))
+        # Attendre la réponse du serveur
+        reponse = client.recv(1024).decode('utf-8')
+        print(reponse)
+
+    elif message == "jean":
+        client.send(b'jean')
+        print(client.recv(1024).decode('utf-8'))
+    elif message == "quit":
+        client.send(b'stop')
+        client.close()
+        print("Déconnexion du serveur.")
+    else:
+        print("Commande non reconnue. Essayez 'recherche' ou 'quit'.")
